@@ -1,16 +1,18 @@
-$("input[type='text']").on("keypress", function(event){
+$("input[type='search']").on("keypress", function(event){
 
 	if(event.which === 13){
 
 		var query = $(this).val();
-		var wikiURL = 'http://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch='  + query;
-		
-		// clean an input area
-		$(this).val("");
 
-	    $.getJSON(wikiURL, updateSearchResults);
+		if(query !== ""){
 
+			var wikiURL = 'http://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch='  + query;
+			
+			// clean an input area
+			$(this).val("");
 
+		    $.getJSON(wikiURL, updateSearchResults);
+	    }
 	}
 });
 
